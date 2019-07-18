@@ -1,6 +1,7 @@
 <button routerLink="../../">
   Back
 </button>
+<div *ngIf="loading && !error" class="loader"></div>
 <ng-container *ngIf="!error">
   <div *ngFor="let c of comments" class="comment">
     by {{c.author}}
