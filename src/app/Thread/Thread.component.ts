@@ -1,7 +1,6 @@
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { RedditAPI } from '../services/RedditAPI.service';
 import { OnInit, Component } from '@angular/core';
-import { map, switchMap } from 'rxjs/operators';
 import { Comment } from '../model/Comment'
 @Component({
   selector: 'app-thread',
@@ -13,7 +12,6 @@ export class ThreadComponent implements OnInit {
   error:boolean = false;
   errorMessage = ""
   constructor(public api:RedditAPI,
-              private router: Router,
               private route: ActivatedRoute,) {
 
   }
