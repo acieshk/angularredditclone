@@ -1,20 +1,23 @@
-<div *ngIf="loading" class="loader"></div>
-<div class="button-bar">
+<div *ngIf="loading && !error" class="loader"></div>
+<div *ngIf="error" class="error">
+  Error loading comments!
+  {{errorMessage}}
+</div>
+<div *ngIf="!loading" class="button-bar">
   <button (click)="back()" [disabled]="start == 0">
     Previous
   </button>
+  <div>
+    Total: {{listings.length}}. Page {{currentPage}} of {{totalPage}}
+  </div>
   <button (click)="next()" [disabled]="end > listings.length">
     Next
   </button>
 </div>
-{{end}}
-{{pageShow}}
-{{listings.length}}
-<div class="listings">
+<div *ngIf="!loading" class="listings">
   <ng-container *ngFor="let listing of listings; index as i" >
     <div *ngIf="((i > start - 1) && (i < end+1))" class="listing">
-
-      <a [routerLink]="'/thread/' + listing.id">{{listing.title}}</a>
+      <a [routerLink]="['/thread', listing.id]">{{listing.title}}</a>
     </div>
   </ng-container>
 </div>

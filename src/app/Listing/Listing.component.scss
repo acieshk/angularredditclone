@@ -7,6 +7,10 @@
   animation: spin 2s linear infinite;
 }
 
+.error {
+  color: #F00;
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -25,6 +29,5 @@
       margin: 30px auto;
       border-radius: 5px;
       padding: 20px;
-      background: #FFF;
   }
 }
