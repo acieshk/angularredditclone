@@ -11,6 +11,7 @@ export class ThreadComponent implements OnInit {
   comments:Comment[] = []
   error:boolean = false;
   errorMessage = ""
+  loading:boolean = false;
   constructor(public api:RedditAPI,
               private route: ActivatedRoute,) {
 
@@ -19,8 +20,10 @@ export class ThreadComponent implements OnInit {
     this.route.params.subscribe(params=>{
       console.log(params['id']);
       this.error = false;
+      this.loading = true;
       this.api.getComments(params['id']).subscribe(
         (result)=>{
+          this.loading = false;
           this.comments = [];
           result[1].data.children.forEach(cm=>{
             console.log(cm)
